@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Корзина - Барбершоп{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-5">🛒 Ваша корзина</h2>
+
+    {% if cart_items %}
+        <div class="row justify-content-center">
+            {% for item in cart_items %}
+                <div class="col-md-10 mb-4">
+                    <div class="card flex-row shadow-sm border-0 p-3 align-items-center" style="border-radius: 15px;">
+                        <!-- Левая часть: изображение -->
+                        {% if item.product.image %}
+                            <div style="flex: 0 0 180px;">
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid rounded" style="height: 160px; object-fit: cover; width: 100%;">
+                            </div>
+                        {% else %}
+                            <div style="flex: 0 0 180px; height: 160px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;" class="rounded">
+                                <span class="text-muted">Нет изображения</span>
+                            </div>
+                        {% endif %}
+
+                        <!-- Правая часть: детали -->
+                        <div class="ms-4 w-100">
+                            <h5 class="mb-1">{{ item.product.name }}</h5>
+                            <p class="text-muted mb-2">{{ item.product.description|truncatechars:100 }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="mb-1"><strong>Цена:</strong> {{ item.product.price }} ₽</p>
+                                    <p class="mb-1"><strong>Количество:</strong> {{ item.quantity }}</p>
+                                    <p class="mb-0"><strong>Итого:</strong> {{ item.total_price }} ₽</p>
+                                </div>
+                                <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-outline-danger btn-sm">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Итог -->
+        <div class="text-center mt-5">
+            <h4><strong>💰 Общая сумма: {{ total }} ₽</strong></h4>
+            <a href="{% url 'checkout' %}" class="btn btn-success btn-lg mt-3 px-5">Оформить заказ</a>
+        </div>
+
+    {% else %}
+        <p class="text-center text-muted fs-5 mt-5">Ваша корзина пуста.</p>
+    {% endif %}
+</div>
+{% endblock %}

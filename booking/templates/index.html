@@ -1,0 +1,25 @@
+{% extends 'base.html' %}  <!-- Наследуем общий шаблон -->
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <section id="booking-form" class="booking-form">
+        <h2>Выберите время</h2>
+        <form action="#">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="appointment">Дата и время:</label>
+            <input type="datetime-local" id="appointment" name="appointment" required>
+
+            <button type="submit">Записаться</button>
+        </form>
+    </section>
+{% endblock %}
+
+
+
+

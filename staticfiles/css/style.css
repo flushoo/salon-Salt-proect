@@ -1,0 +1,167 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+header {
+    background-color: #222;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    color: #fff;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    background: url('../images/main-image.jpg') no-repeat right center;
+    background-size: cover;
+}
+
+.hero-image {
+    display: block;
+    width: 110%; /* Увеличиваем ширину */
+    height: 100%;
+    object-fit: cover;
+    margin-left: -10%; /* Сдвигаем вправо */
+}
+
+/* Стили для overlay */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background: rgba(49, 24, 24, 0.171); /* Полупрозрачный фон */
+    padding: 40px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Стили заголовка */
+.overlay h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Стили текста */
+.overlay p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Стили кнопки */
+.btn-primary {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background: #d32f2f; /* Красный цвет кнопки */
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Эффект при наведении */
+.btn-primary:hover {
+    background: #130707; /* Темнее при наведении */
+    transform: scale(1.05);
+}
+
+
+
+
+/* Стили для раздела услуг */
+.services-section {
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+}
+
+.section-title {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.service-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-item h3 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 20px;
+    color: #d35400;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+

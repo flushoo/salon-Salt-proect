@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mb-4 text-center">Редактирование записи</h1>
+
+        <div class="card shadow p-4">
+            <form method="POST" class="needs-validation">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="id_service" class="form-label">Выберите услугу</label>
+                    {{ form.service }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_barber" class="form-label">Выберите барбера</label>
+                    {{ form.barber }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_date" class="form-label">Дата</label>
+                    {{ form.date }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_time" class="form-label">Время</label>
+                    {{ form.time }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_client_name" class="form-label">Имя клиента</label>
+                    {{ form.client_name }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_client_email" class="form-label">Email клиента</label>
+                    {{ form.client_email }}
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">💾 Сохранить изменения</button>
+                    <a href="{% url 'user_profile' %}" class="btn btn-secondary">↩️ Отмена</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const serviceSelect = document.getElementById("id_service");
+            const barberSelect = document.getElementById("id_barber");
+
+            function updateBarbers() {
+                const serviceId = serviceSelect.value;
+                fetch(`/get_barbers/?service_id=${serviceId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        barberSelect.innerHTML = "";
+                        data.barbers.forEach(barber => {
+                            const option = document.createElement("option");
+                            option.value = barber.id;
+                            option.textContent = barber.name;
+                            barberSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error("Ошибка загрузки барберов:", error));
+            }
+
+            serviceSelect.addEventListener("change", updateBarbers);
+        });
+    </script>
+{% endblock %}

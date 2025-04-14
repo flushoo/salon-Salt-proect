@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Наши услуги - Барбершоп{% endblock %}
+
+{% block content %}
+<div class="container text-center my-5">
+    <h2 class="mb-4">Наши услуги</h2>
+    <p class="lead">Мы предлагаем качественные стрижки для мужчин и женщин.</p>
+
+    <div class="row justify-content-center">
+        {% for service in services %}
+            <div class="col-md-5 mb-4">
+                <div class="card shadow-lg">
+                    <!-- Отображение изображения услуги -->
+                    {% if service.image %}
+                        <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.name }}" style="object-fit: cover; height: 250px;">
+                    {% else %}
+                        <div class="card-img-top" style="height: 250px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                            <p>Изображение не доступно</p>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.name }}</h5>
+                        <p class="card-text">Длительность: {{ service.duration }} мин.</p>
+                        <p><strong>Цена: {{ service.price }} руб.</strong></p>
+                        <a href="{% url 'booking' %}" class="btn btn-primary">Записаться</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Пока нет доступных услуг.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

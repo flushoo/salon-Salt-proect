@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Salt Salone | О нас{% endblock %}
+
+{% block content %}
+<!-- Подключение шрифта Tilla -->
+<link href="https://fonts.googleapis.com/css2?family=Tilla&display=swap" rel="stylesheet">
+
+<div class="container-fluid mt-5">
+    <h1 class="text-center fw-bold text-uppercase" style="letter-spacing: 2px;">О салоне "Salt Salone"</h1>
+    <p class="text-center text-muted mx-auto" style="max-width: 600px;">
+        Пространство, где стиль, профессионализм и комфорт соединяются воедино.
+    </p>
+
+    <!-- Основной блок -->
+    <div class="about-section mt-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-center">
+                <img src="{% static 'booking/images/431.jpg' %}" class="img-fluid rounded-4 shadow-lg main-img" alt="Интерьер салона">
+            </div>
+            <div class="col-lg-6">
+                <div class="about-text p-4">
+                    <h3 class="fw-bold text-uppercase">Почему выбирают нас?</h3>
+                    <p class="text-muted">
+                        SALT — это современный салон красоты и арт-пространство в Лондоне, созданное в 2020 году.
+                        Мы предлагаем премиальные услуги, расслабляющую атмосферу и стильный интерьер.
+                    </p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="d-flex align-items-center">
+                            <i class="fa fa-check-circle text-primary me-2"></i> Профессиональные стилисты
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="fa fa-check-circle text-primary me-2"></i> Современные техники стрижки и ухода
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="fa fa-check-circle text-primary me-2"></i> Премиальная косметика
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="fa fa-check-circle text-primary me-2"></i> Пространство для мероприятий
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Блок с дополнительной информацией -->
+    <div class="info-section mt-5 py-5" style="background: #f7f7f7;">
+        <h2 class="text-center text-uppercase" style="letter-spacing: 1px;">Философия SALT</h2>
+        <p class="text-muted text-center mx-auto" style="max-width: 800px;">
+            SALT — это современная парикмахерская и место для проведения мероприятий, расположенное в Далстоне, Лондон.
+        </p>
+        <p class="text-muted text-center mx-auto" style="max-width: 800px;">
+            Джон Пол Скотт основал SALT в 2020 году, чтобы создать пространство, соответствующее самым высоким стандартам комфорта, стиля и заботы о клиентах и парикмахерах.
+        </p>
+    </div>
+
+    <!-- Раздел с деталями -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h4 class="fw-semibold">Высокий уровень сервиса</h4>
+            <p class="text-muted">
+                Мы предлагаем стрижки и окрашивание от профессионалов модной индустрии в атмосфере уюта и инклюзивности.
+                Записи на прием длиннее, чем обычно, чтобы обеспечить персонализированный подход.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h4 class="fw-semibold">Экологичность и забота</h4>
+            <p class="text-muted">
+                Мы следим за переработкой всех отходов, используем только натуральную косметику и поддерживаем инициативы Green Salon.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h4 class="fw-semibold">Забота о команде</h4>
+            <p class="text-muted">
+                Наши сотрудники получают бесплатные занятия спортом и пилатесом, чтобы поддерживать физическое и ментальное здоровье.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h4 class="fw-semibold">Частные мероприятия</h4>
+            <p class="text-muted">
+                Пространство SALT можно арендовать для частных мероприятий. По вопросам обращайтесь на <a href="mailto:info@saltspacelondon.com" class="text-decoration-none">info@saltspacelondon.com</a>.
+            </p>
+        </div>
+    </div>
+
+    <!-- Фотогалерея -->
+    <h2 class="text-center mt-5 text-uppercase" style="letter-spacing: 1px;">Фотогалерея</h2>
+    <div class="gallery-container mt-4">
+        <div class="gallery-item"><img src="{% static 'booking/images/tete.jpg' %}" alt="Фото 1"></div>
+        <div class="gallery-item"><img src="{% static 'booking/images/dejx.jpg' %}" alt="Фото 2"></div>
+        <div class="gallery-item"><img src="{% static 'booking/images/asd.jpg' %}" alt="Фото 3"></div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{% url 'booking' %}" class="btn btn-dark btn-lg me-3">Записаться</a>
+        <a href="{% url 'services' %}" class="btn btn-outline-dark btn-lg">Услуги</a>
+    </div>
+</div>
+
+<!-- Стили -->
+<style>
+    /* Применяем шрифт Tilla ко всему контенту */
+    body {
+        font-family: 'Tilla', sans-serif;
+        background: linear-gradient(180deg, #f8f9fa, #e9ecef);
+    }
+
+    .main-img {
+        border-radius: 12px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .main-img:hover {
+        transform: scale(1.05);
+    }
+
+    .info-section {
+        padding: 40px 0;
+        background: #fdfdfd;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        border-radius: 12px;
+        transition: 0.3s ease-in-out;
+        filter: grayscale(30%);
+    }
+
+    .gallery-item img:hover {
+        transform: scale(1.05);
+        filter: grayscale(0%);
+    }
+
+    .btn {
+        padding: 10px 30px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .about-section, .info-section, .gallery-container {
+        background-color: transparent;
+    }
+</style>
+
+{% endblock %}

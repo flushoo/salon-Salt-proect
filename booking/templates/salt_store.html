@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Salt Store{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-uppercase font-weight-bold">Наши товары</h2>
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+            <div class="col">
+                <div class="card shadow-sm border-light rounded">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted" style="height: 80px; overflow: hidden;">{{ product.description }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="card-price text-primary font-weight-bold">{{ product.price }} ₽</p>
+                            <!-- Добавлена ссылка на добавление товара в корзину -->
+                            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-outline-primary btn-sm">Добавить в корзину</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="col-12 text-center">В данный момент нет доступных товаров.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

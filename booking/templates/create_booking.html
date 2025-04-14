@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Записаться на услугу</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Выбор услуги -->
+        <div class="mb-3">
+            <label for="service" class="form-label">Выберите услугу</label>
+            <select name="service" id="service" class="form-select" required>
+                <option value="" disabled selected>Выберите услугу</option>
+                {% for service in services %}
+                    <option value="{{ service.id }}" {% if service.id == service_id %}selected{% endif %}>{{ service.name }} - {{ service.price }}₽</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Выбор барбера -->
+        <div class="mb-3">
+            <label for="barber" class="form-label">Выберите барбера</label>
+            <select name="barber" id="barber" class="form-select" required>
+                <option value="" disabled selected>Выберите барбера</option>
+                {% for barber in barbers %}
+                    <option value="{{ barber.id }}">{{ barber.user.get_full_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Дата и время -->
+        <div class="mb-3">
+            <label for="date" class="form-label">Выберите дату</label>
+            <input type="date" name="date" id="date" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="time" class="form-label">Выберите время</label>
+            <input type="time" name="time" id="time" class="form-control" required>
+        </div>
+
+        <!-- Контактные данные -->
+        <div class="mb-3">
+            <label for="client_name" class="form-label">Ваше имя</label>
+            <input type="text" name="client_name" id="client_name" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="client_email" class="form-label">Ваш email</label>
+            <input type="email" name="client_email" id="client_email" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Записаться</button>
+    </form>
+
+    <script>
+        // Обработчик изменения услуги
+        document.getElementById('service').addEventListener('change', function() {
+            var serviceId = this.value;
+            // Перезагружаем страницу с новым параметром service_id в URL
+            window.location.href = "?service_id=" + serviceId;
+        });
+    </script>
+{% endblock %}
